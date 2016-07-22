@@ -5,7 +5,7 @@ var app = require('express')(),
     fs = require('fs');
 
 // Chargement de la page index.html
-// super 2
+// super 3
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
