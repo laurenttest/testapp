@@ -1,19 +1,21 @@
 <?php
+
 function readLines($fileName)
 {
-  // Si le fichier est inexistant, on ne continue pas
   if (!$file = fopen($fileName, 'r'))
   {
+    echo "passs222"; 
     return;
   }
- 
-  // Tant qu'il reste des lignes à parcourir
   while (($line = fgets($file)) !== false)
   {
-    // On dit à PHP que cette ligne du fichier fait office de « prochaine entrée du tableau »
     yield $line;
   }
  
   fclose($file);
 }
-readLines('bob.txt');
+$generator= readLines('bob.txt');
+foreach ($generator as $line)
+{
+  echo "---> ".$line."<br>";// Effectuer une opération sur $line
+}
