@@ -58,3 +58,36 @@ foreach ($obj->generator() as &$val)
 echo '<pre>';
 var_dump($obj->attr());
 echo '</pre>';
+
+$maFonction = function()
+{
+  echo 'Hello world';
+};
+
+var_dump($maFonction());
+
+
+$additionneur = function()
+{
+  $this->_nbr += 5;
+};
+
+class MaClasse
+{
+  private $_nbr = 0;
+
+  public function nbr()
+  {
+    return $this->_nbr;
+  }
+}
+
+$obj = new MaClasse;
+
+// On obtient une copie de notre closure qui sera liée à notre objet $obj
+// Cette nouvelle closure sera appelée en tant que méthode de MaClasse
+// On aurait tout aussi bien pu passer $obj en second argument
+$additionneur = $additionneur->bindTo($obj, 'MaClasse');
+$additionneur();
+
+echo $obj->nbr();
